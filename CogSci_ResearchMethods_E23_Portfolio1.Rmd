@@ -1,0 +1,156 @@
+---
+title: "Portfolio exam - Part 1 | Methods 1 F23, CogSci @AU"
+author: "YOUR NAME HERE, GROUP # HERE"
+date: "12/10/2023"
+output: html_document:
+  toc: true
+---
+
+---
+
+#### Deadline: October 12 2023 h23:59
+
+#----------------------------------
+# GENERAL INSTRUCTIONS
+#----------------------------------
+
+# 1. GITHUB:
+
+# When you are done completing the below code, please push to Github with a commit comment (use _ for spaces in the message)
+
+# You can push as many times as you would like. The last version that you commit before the assignment deadline is the one that will be reviewed for feedback.
+
+# Please use your individual Github account to push assignments. Do not create a group account if you are working in a group.
+
+#----------------------------------
+
+# 2. PUSH CODE & KNIT HTML MARKDOWN DOCUMENT.
+
+# Please push your code AND a knit HTML file of the document to Github. 
+
+#----------------------------------
+
+# 3. GROUPWORK
+
+**Please write your name in the `author` field above, followed by your Group #.**
+
+# If you are working in groups, it should be possible to grade your code AND your written text individually. 
+
+# Therefore, please indicate your group number at the top of your markdown file and indicate your group members' names below.
+
+#----------------------------------
+
+# 4. Suppressing code output.
+
+# Please suppress code output that is not for evaluation (e.g., printouts of data frames, variable values, etc.) by setting echo = FALSE in chunks where only code is being run. (Look in Class3A_PHB_Rmd from class 3 for more info on echo = FALSe and also further down in this document). This will make it much easier to evaluate your HTML output files.
+
+#----------------------------------
+
+#### Group members' names.
+
+# Please indicate your group members' names here.
+My group members' names are: []
+
+#### Introduction
+
+The goal of this exam is to write a short data mining report on the CogSci Intro Week Personality Test Data in which you answer the following questions **in prose, code and graphs**.
+
+First of all, let's start by looking at the setup chunk. If you need to load packages or set your working directory, do so here:
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE, include = TRUE, message = FALSE, warning = FALSE)
+## your code goes here
+```
+
+Now you have to import the personality data from the 'cogsci_personality_2023.csv' file; i.e., the one we have worked with in both class 2 and class 3. Note the filename is in lowercase and it is located in the /renv_cogsci_e23 folder on UCloud. 
+
+Once you have imported it, use the `head()` function to print the first 10 lines of the data set.
+
+```{r load_data}
+## your code goes here
+
+```
+
+Once you are done loading the data, you can start working on the questions below.
+
+### Question 1
+
+#### Question 1.1
+
+Who can hold their breath the longest on average — those with right or left ocular dominance? Notice that the column is called `ocular_dom`, and that right ocular dominance is indicated in the column with 'Right', while left ocular dominance is indicated in the column with 'Left'. Therefore, you want to only filter out the data in this column which corresponds to either "Right" or "Left".
+
+Plot the data using `ggplot2` to find out the answer to your question. The plots should include error bars depicting the standard error of the mean: you can add these using the `geom_errorbar()` function and specifying `stat = "summary", fun.data = "mean_se"`. 
+
+#### Question 1.2
+
+Then use the `mean()` and `sd()` functions *within a tidyverse pipe* to make a summary data set, in which you show mean and standard deviation of the two eye dominance groups.
+
+Bonus question: If you feel brave, you can instead try making a boxplot (`geom_boxplot()`) or a violin plot (`geom_violin()`) which are better at representing the actual distribution of the data (compared to a bar plot, which only depicts mean and standard deviation).
+
+
+```{r question1}
+## your code goes here
+
+```
+
+Explain your results in plain terms here (max 3 sentences): 
+
+---
+
+#### Question 2
+
+Who likes silence vs. noise best -- by gender? Also in this case you should plot the data using `ggplot2` (including error bars depicting the standard error of the mean), then use the `mean()` and `sd()` functions to find mean and standard deviation of the two genders (still making a summary data set with tidyverse and pipes).
+
+Bonus question: If you feel brave, you can instead try making a boxplot (`geom_boxplot()`) or a violin plot (`geom_violin()`) which are better at representing the actual distribution of the data (compared to a bar plot, which only depicts mean and standard deviation).
+
+```{r question2}
+## your code goes here
+
+```
+
+Explain your results in plain terms here (max 3 sentences):
+
+---
+
+#### Question 3
+
+Shoe size could tell us something about general body size, which could also be connected to one's ability to hold your breath. In other words we predict that there is a positive relation between shoe size and how long time CogSci students can hold their breath. Try plotting the two sets of data against each other using a *scatter plot* (hint: both variables are continuous variables). You can make a scatter plot in `ggplot2` using the `geom_point()` function and plotting one variable on each axis. Use grouping in your plot to distinguish the relationship between shoe size and holding breath for the different gender subgroups, since we expect at least some of the groups to have different shoe sizes relative to each other. You can for instance use the `color` parameter within the `aes()` function to color by gender.
+
+```{r question3}
+## your code goes here
+
+```
+
+
+Explain your results in plain terms here (max 3 sentences): 
+
+---
+
+#### Question 4
+
+Is the `breathhold` variable normally distributed? Provide both visual (histogram and QQ-plot) and numeric (Shapiro-Wilk test and skewness/kurtosis values) support for your answer.
+
+```{r question4}
+## your code goes here
+
+```
+
+---
+
+#### Question 5
+
+Are the two balloon reaction time variables (`balloon` and `balloon_balance`) normally distributed? Provide visual (histogram and QQ-plot) and numeric (Shapiro-Wilk test and skewness/kurtosis values) support for your answer.
+
+If they are not, then discuss your results below.
+
+```{r question5}
+## your code goes here
+
+```
+
+---
+
+Explain your results in plain terms here (max 3 sentences): 
+
+
+That's all!
