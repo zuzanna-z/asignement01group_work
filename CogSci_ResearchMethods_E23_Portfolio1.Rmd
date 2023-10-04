@@ -140,11 +140,11 @@ hist(data$breathhold)
 
 ## OR
 
-## Custom Histogram - I don't know why the z-score (red line) is flat
+## Custom Histogram
 ggplot(data ,aes(x = breathhold)) +
   ggtitle('Histogram of the breathhold task') +
-  labs(x = 'Length of Time', y = 'Number of Participants') +
-  geom_histogram(
+  labs(x = 'Length of Time', y = 'Density') +
+  geom_histogram(aes(y = ..density..),
     colour = 'black', 
     fill = 'lightgreen', 
     bins = 50) +
