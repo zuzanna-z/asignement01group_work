@@ -1,6 +1,6 @@
 ---
 title: "Portfolio exam - Part 1 | Methods 1 F23, CogSci @AU"
-author: "Vilma Bejer Kristiansen, Benjamin Tang Hørning Jensen, Katarina Krajcova, Zuzanna Katarzyna Zyla, GROUP 4"
+author: "Vilma Bejer Kristiansen, Benjamin Tang Hørning Jensen, Katarina Krajcova, Zuzanna Katarzyna Zyla and Alexander Juby-Rasmussen GROUP 4"
 date: "12/10/2023"
 output: html_document:
   toc: true
@@ -271,6 +271,7 @@ Females breathhold was mostly similar (around 50 +-10sec) with all shoesizes. Fo
 ---
 
 #### Question 4
+# Answered by Alex
 
 Is the `breathhold` variable normally distributed? Provide both visual (histogram and QQ-plot) and numeric (Shapiro-Wilk test and skewness/kurtosis values) support for your answer.
 
