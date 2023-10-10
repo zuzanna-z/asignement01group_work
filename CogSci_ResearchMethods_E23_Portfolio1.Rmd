@@ -60,6 +60,7 @@ First of all, let's start by looking at the setup chunk. If you need to load pac
 ```{r setup}
 knitr::opts_chunk$set(echo = TRUE, include = TRUE, message = FALSE, warning = FALSE)
 ## your code goes here
+pacman::p_load(tidyverse,pastecs)
 ```
 
 Now you have to import the personality data from the 'cogsci_personality_2023.csv' file; i.e., the one we have worked with in both class 2 and class 3. Note the filename is in lowercase and it is located in the /renv_cogsci_e23 folder on UCloud. 
@@ -68,7 +69,8 @@ Once you have imported it, use the `head()` function to print the first 10 lines
 
 ```{r load_data}
 ## your code goes here
-
+data <- read_csv("/Users/alexanderjuby-rasmussen/R/assignment01group_work/cogsci_personality_2023.csv")
+head(data)
 ```
 
 Once you are done loading the data, you can start working on the questions below.
@@ -273,7 +275,57 @@ Females breathhold was mostly similar (around 50 +-10sec) with all shoesizes. Fo
 Is the `breathhold` variable normally distributed? Provide both visual (histogram and QQ-plot) and numeric (Shapiro-Wilk test and skewness/kurtosis values) support for your answer.
 
 ```{r question4}
-## your code goes here
+## The variable 'breathhold' is NOT normally distributed, here's why...
+
+## Quick Histogram
+hist(data$breathhold)
+
+## OR
+
+## Custom Histogram
+ggplot(data ,aes(x = breathhold)) +
+  ggtitle('Histogram of the breathhold task') +
+  labs(x = 'Length of Time', y = 'Density') +
+  geom_histogram(aes(y = ..density..),
+    colour = 'black', 
+    fill = 'lightgreen', 
+    bins = 50) +
+  stat_function(fun = dnorm, 
+                args = list(
+                  mean = mean(data$breathhold, na.rm = TRUE),
+                  sd = sd(data$breathhold, na.rm = TRUE)
+                ), 
+                colour= "red", size = 1) +
+  theme_minimal() +
+  xlim(range(data$breathhold))
+
+## The above shows how the data is formed as a histogram and it can clearly be seen that the data does not follow a normal distribution curve, as there seems to almost be 2 peaks.
+
+## Quick QQ-plot
+qqnorm(data$breathhold)
+qqline(data$breathhold)
+
+## OR
+
+## Custom QQ-Plot
+ggplot(data, aes(sample = breathhold)) + 
+  stat_qq() +
+  stat_qq_line(colour = 'red') +
+  labs(x = 'Theoretical Quantiles', y = 'Sample Quantiles') +
+  ggtitle('Breathhold Q-Q Plot') +
+  theme_bw()
+
+## The above graph shows how the points do not follow the line of best fit (z-score) as although the values that lie within -1 and 1 of the theoretical quantiles seem to fit the tail end of the points start to deviate and become more spread out from one another. 
+
+## Shapiro-Wilk test
+shapiro.test(data$breathhold)
+## Since the p-value of 0.000331 < 0.05 then we can assume the data is NOT normal and therefore significant
+
+## Skewness/Kutosis values
+round(pastecs::stat.desc(data$breathhold, basic = FALSE, norm = TRUE), digits = 2)
+## Since both skew.2SE (1.88) and kurt.2SE (1.90) are both > 1 then the data is NOT normal and therefore significant
+
+# In conclusion we can concur that the data is NOT normal and the variable 'breathhold' is not normally distributed.
 
 ```
 
