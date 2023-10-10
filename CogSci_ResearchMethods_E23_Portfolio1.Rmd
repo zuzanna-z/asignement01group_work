@@ -90,10 +90,57 @@ Bonus question: If you feel brave, you can instead try making a boxplot (`geom_b
 
 ```{r question1}
 ## your code goes here
+## Vilma
+#1.1 Solution:
+
+filter_data <- data %>%
+  filter(ocular_dom != "Both") #Filter the data, in the Ocular_dom collum, so we don't have "Both" in the dataset.
+
+filter_data %>% ggplot(aes(x=ocular_dom, y=breathhold, fill = ocular_dom)) + #making the bar plot, with the variables.
+  geom_bar(
+       stat = "summary",
+    fun = mean
+    
+  ) + # Adding error bars, for the x/y values. 
+  
+  geom_errorbar(
+    stat = "summary",
+    fun.data = mean_se
+    
+    
+  ) + #Cleaning up the look, so it is nicer to look at
+  
+  labs(
+    x= "Ocular Dominance",
+    y= "Breathold (s)",
+    title= "Breathold according to Ocular Dominance"
+    
+    
+  ) +
+  
+  
+  theme_minimal()
+
+
+```
+
+
+```{r}
+## Vilma
+#1.2 Solution:
+
+data %>%
+ group_by(ocular_dom) %>%
+  summarise(mean(breathhold),
+            sd(breathhold)) #Grouping the data only to look at the Ocular_dom's mean and SD related to the numeric value from "Breathhold" 
+
+
 
 ```
 
 Explain your results in plain terms here (max 3 sentences): 
+
+###Vilma: The right ocular dominance sample, can hold their breath the longest on average (Right_mean:56.65, left_mean:55.44), but the one with the longest breathold is in the left sample group (SD_left:30.55, SD_right:19.71). There is no error-bars on the "both", because there is only one who answered both, so no SD.
 
 ---
 
