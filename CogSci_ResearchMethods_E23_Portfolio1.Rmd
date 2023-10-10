@@ -207,11 +207,16 @@ Shoe size could tell us something about general body size, which could also be c
 ```{r question3}
 ## your code goes here
 
+ggplot(data = data)+
+  geom_point(aes(x= shoesize, y = breathhold, color = gender))
+
+
+
 ```
 
 
 Explain your results in plain terms here (max 3 sentences): 
-
+Females breathhold was mostly similar (around 50 +-10sec) with all shoesizes. For male, the results were more differentiated but would not support the hypothesis that bigger shoesize means ability to hold breath for longer. The highest results were for female with shoesize around 38.
 ---
 
 #### Question 4
