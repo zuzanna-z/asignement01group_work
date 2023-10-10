@@ -1,6 +1,6 @@
 ---
 title: "Portfolio exam - Part 1 | Methods 1 F23, CogSci @AU"
-author: "Vilma Bejer Kristiansen, Benjamin Tang Hørning Jensen, GROUP 4"
+author: "Vilma Bejer Kristiansen, Benjamin Tang Hørning Jensen, Katarina Krajcova, GROUP 4"
 date: "12/10/2023"
 output: html_document:
   toc: true
@@ -253,6 +253,7 @@ Shoe size could tell us something about general body size, which could also be c
 
 ```{r question3}
 ## your code goes here
+## Katarina 
 
 ggplot(data = data)+
   geom_point(aes(x= shoesize, y = breathhold, color = gender))
