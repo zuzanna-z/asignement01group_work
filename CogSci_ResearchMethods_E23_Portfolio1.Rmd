@@ -69,7 +69,8 @@ Once you have imported it, use the `head()` function to print the first 10 lines
 
 ```{r load_data}
 ## your code goes here
-data <- read_csv("/Users/alexanderjuby-rasmussen/R/assignment01group_work/cogsci_personality_2023.csv")
+setwd('/work/renv_cogsci_e23')
+data <- read_csv('cogsci_personality_2023.csv')
 head(data)
 ```
 
