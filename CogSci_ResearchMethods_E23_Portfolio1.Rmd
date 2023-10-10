@@ -146,7 +146,15 @@ data %>%
 # box plot representing relationship between the gender and sound level preference
 data %>% ggplot(aes(x = gender, y = sound_level_pref, fill = gender)) +
   #adding the boxplot geom
-  geom_boxplot() +
+  geom_boxplot()
++ 
+  #adding a second geom - the error bar showing the standard error 
+  geom_errorbar(
+    stat = 'summary',
+    fun.data = mean_se,
+    width = .2
+  )
++
   # labeling the plot to make it more legible
   labs(x = "Gender", 
        y = "Sound level preference", 
@@ -163,7 +171,15 @@ data %>% ggplot(aes(x = gender, y = sound_level_pref, fill = gender)) +
 # violin plot representing relationship between the gender and sound level preference
 data %>% ggplot(aes(x = gender, y = sound_level_pref, fill = gender)) +
   # adding the violin geom
-  geom_violin() +
+  geom_violin()
++ 
+  #adding a second geom - the error bar showing the standard error 
+  geom_errorbar(
+    stat = 'summary',
+    fun.data = mean_se,
+    width = .2
+  )
++
   # labeling the plot to make it more legible
   labs(x = "Gender", 
        y = "Sound level preference", 
