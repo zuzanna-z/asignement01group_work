@@ -1,6 +1,6 @@
 ---
 title: "Portfolio exam - Part 1 | Methods 1 F23, CogSci @AU"
-author: "Vilma Bejer Kristiansen, GROUP 4"
+author: "Vilma Bejer Kristiansen, Benjamin Tang Hørning Jensen, GROUP 4"
 date: "12/10/2023"
 output: html_document:
   toc: true
@@ -279,18 +279,60 @@ Is the `breathhold` variable normally distributed? Provide both visual (histogra
 
 #### Question 5
 
+##Answered by Benjamin
+
 Are the two balloon reaction time variables (`balloon` and `balloon_balance`) normally distributed? Provide visual (histogram and QQ-plot) and numeric (Shapiro-Wilk test and skewness/kurtosis values) support for your answer.
 
 If they are not, then discuss your results below.
 
-```{r question5}
-## your code goes here
+```{r question5, message=FALSE, warning=FALSE}
+
+#Now the first step in deciding whether or not the data is normally distributed is a visual inspection. Here the histogram and QQ-plot will come in handy. 
+
+#Creating a histogram for balloon_balance
+ggplot(df, aes(balloon_balance)) +
+  #using density as y-axis with 24 bins. 
+  geom_histogram(aes(y = ..density..), color = "pink", fill = "green", bins = 24) + 
+  #creating a line showing the expected shape of a normal distribution based on the mean and standard deviation of balloon_balance
+  stat_function(fun = dnorm, args = list(mean = mean(df$balloon_balance, na.rm = TRUE), sd = sd(df$balloon_balance, na.rm = TRUE)), colour= "black", size = 1
+                ) +
+  theme_minimal()
+
+#Using same approach for balloon_inflate
+ggplot(df, aes(balloon_inflate)) +
+  geom_histogram(aes(y = ..density..), color = "pink", fill = "green", bins = 24) + 
+  stat_function(fun = dnorm, args = list(mean = mean(df$balloon_inflate, na.rm = TRUE), sd = sd(df$balloon_inflate, na.rm = TRUE)), colour= "black", size = 1
+                ) +
+  theme_minimal()
+
+#Both density plots shows significant deviance from the expected bell-curve of a normal distribution visually indicating non-normality. 
+
+
+
+
+#Making a qq-plot of balloon_balance and balloon_inflate with an identity line 
+
+qqnorm(df$balloon_balance)
+qqline(df$balloon_balance)
+
+qqnorm(df$balloon_inflate)
+qqline(df$balloon_inflate)
+
+#Significant deviation from the identity lines representing normality in the qq-plots indicate non-normality
+
+
+#Asking Shapiro Wilk if he can help us out with some testing of our variables - cbind() helps us do this jointly. 
+round(pastecs::stat.desc(cbind(df$balloon_balance, df$balloon_inflate), basic = FALSE, norm = TRUE), digits = 3)
+
+#Skewness and skew.2SE are greater than 1 for both variables indicating non-normality.
+#Ballon balancing, W = 0.74, p < 0.05, and ballon inlating W = 0.74, p < 0.05 are both significantly non-normal since the p-value is less than 0.05. 
 
 ```
 
 ---
 
 Explain your results in plain terms here (max 3 sentences): 
+Hey Grandma! You see these bins here on the two graphs? - and the black line? Would you say they have roughly the same overall shape? Nahh i wouldnt either. What about these dots and the line? Yeaah ballon_inflation definitly fits for a while, but its still not a great match - Just like you and your first husband huhh grandma? Fits for a while and then.. arhh Haha im just kidding grandma. Yeaah i agree - sometimes you just have to look at the plain numbers... and he was way to old for you - i agree... And actually these fancy numbers here suggest the same thing for our variables - they just doesn't fit the normal curve very well... Yes yes calm down i know you are quite normal grandma - it was your old crazy husband that didn't fit... i agree.
 
 
 That's all!
