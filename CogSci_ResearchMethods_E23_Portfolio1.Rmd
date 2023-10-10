@@ -386,7 +386,7 @@ round(pastecs::stat.desc(cbind(df$balloon_balance, df$balloon_inflate), basic = 
 
 ---
 
-Explain your results in plain terms here (max 3 sentences): 
+Explain your results in plain terms here (so grandma would understand): 
 Hey Grandma! You see these bins here on the two graphs? - and the black line? Would you say they have roughly the same overall shape? Nahh i wouldnt either. What about these dots and the line? Yeaah ballon_inflation definitly fits for a while, but its still not a great match - Just like you and your first husband huhh grandma? Fits for a while and then.. arhh Haha im just kidding grandma. Yeaah i agree - sometimes you just have to look at the plain numbers... and he was way to old for you - i agree... And actually these fancy numbers here suggest the same thing for our variables - they just doesn't fit the normal curve very well... Yes yes calm down i know you are quite normal grandma - it was your old crazy husband that didn't fit... i agree.
 
 
