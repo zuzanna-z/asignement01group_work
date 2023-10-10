@@ -1,6 +1,6 @@
 ---
 title: "Portfolio exam - Part 1 | Methods 1 F23, CogSci @AU"
-author: "YOUR NAME HERE, GROUP # HERE"
+author: "Vilma Bejer Kristiansen, GROUP 4"
 date: "12/10/2023"
 output: html_document:
   toc: true
