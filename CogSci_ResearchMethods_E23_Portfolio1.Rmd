@@ -1,6 +1,6 @@
 ---
 title: "Portfolio exam - Part 1 | Methods 1 F23, CogSci @AU"
-author: "Vilma Bejer Kristiansen, Benjamin Tang Hørning Jensen, Katarina Krajcova, GROUP 4"
+author: "Vilma Bejer Kristiansen, Benjamin Tang Hørning Jensen, Katarina Krajcova, Zuzanna Katarzyna Zyla, GROUP 4"
 date: "12/10/2023"
 output: html_document:
   toc: true
@@ -152,6 +152,7 @@ Bonus question: If you feel brave, you can instead try making a boxplot (`geom_b
 
 ```{r question2}
 ## your code goes here
+# Answered by Zuzanna 
 
 
 # bar plot representing relationship between the gender and sound level preference
